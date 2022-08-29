@@ -52,7 +52,7 @@ mongoose.connect(process.env.MONGODB_URL,{
       db.connection.name,
       " status ",
       mongoose.connection.readyState ,
-      "connected"
+      ":connected"
     );
 
    })
