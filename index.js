@@ -1,6 +1,9 @@
 const express= require ('express');
+const mongoose= require('mongoose');
 const cors= require('cors');
-const UserRoutes= require('./Routes/user');
+const dotenv= require('dotenv').config();
+const {readdirSync} = require('fs');
+ 
 
 const app= express();
 
@@ -28,9 +31,32 @@ const corsOption=(req,res) => {
  }
 app.use(cors(corsOption))
 
-app.use(UserRoutes)
-
-
-app.listen('4000',() => { 
-    console.log('server is listening on port 4000')
+//This will dynamically set routes
+readdirSync('./Routes').map((r) => { 
+    app.use('/api/',require('./Routes/'+r))
  })
+
+,
+
+//docker:mongopw@localhost:49153/socialnetwork
+
+app.listen(process.env.PORT, () => {
+  console.log(`server is listening on port ${process.env.PORT}`);
+
+mongoose.connect(process.env.MONGODB_URL,{
+    useNewUrlParser:true
+  })
+  .then((db) => { 
+    console.log(
+      "database",
+      db.connection.name,
+      " status ",
+      mongoose.connection.readyState ,
+      "connected"
+    );
+
+   })
+   .catch((err) => { 
+    console.log('FAILED TO CONNECT DB',err)
+    })
+});

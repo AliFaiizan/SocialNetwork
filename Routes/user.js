@@ -1,12 +1,11 @@
 const express= require('express')
+const UserController= require('../Controllers/user')
 
 
 const router= express.Router()
 
 
-router.get('/user',(req,res,next) => { 
-    res.send('there are no users')
- })
+router.get('/user',UserController.home)
 
 
 module.exports=router;
