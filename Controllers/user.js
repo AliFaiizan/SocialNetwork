@@ -1,11 +1,12 @@
 const { validationResult } = require('express-validator');
-const { emailValidation } = require('../helpers/validation');
 const User=require('../models/user');
+const {GenerateToken} =require('../helpers/token');
+const { SendVerificationEmail } = require("../helpers/mailer");
 
 
 module.exports.register=async(req,res,next) => { 
     const errors=validationResult(req);
-
+    
      if (!errors.isEmpty()) {
        return res.status(400).json({ errors: errors.array() });
      }
@@ -15,17 +16,19 @@ module.exports.register=async(req,res,next) => {
     let usrn=req.body.user_name
     do {
         usernameExists = await User.findOne({ user_name: usrn});
-        if (usernameExists) {
-        usrn += (new Date() * Math.random())
+        if(usernameExists===null){
+            isValid=true;
+        }else if (usernameExists) {
+        usrn += ( new Date() * Math.random())
             .toString()
             .substring(0, 1);
         } else {
-        isValid = true;
+            isValid = true;
         }
-    } while (isValid);
+    } while (!isValid);
+    
     req.body["user_name"] = usrn;
       
-     
     try{
         const {
             first_name,
@@ -50,13 +53,26 @@ module.exports.register=async(req,res,next) => {
           bDay,
           gender,
         }).save()
-         
+
+        const token = GenerateToken({ _id: user._id.toString() }, "30m");
+
+        const url = `${process.env.BASE_URL}/activate/${token}`;
+
+        SendVerificationEmail(user.email, user.first_name, url);
+        
         res.status(200).json({
             message:`sucessfully created`,
             user:user.id,
             user_name:user.user_name
         })
+        
     }catch{
         res.status(500).json({"message":"failed to register data"})
     }
  } 
+
+module.exports.activate=async(req,res,next) =>{
+    const token= req.params.token;
+
+
+}

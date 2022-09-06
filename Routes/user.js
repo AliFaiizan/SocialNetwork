@@ -27,13 +27,18 @@ router.post(
           
             throw new Error("Password does not match")
         }
-       return true
+        return true
      }),
   check("first_name").isLength({ min: 3 }).withMessage("First name is too short"),
   check("last_name").isLength({ min: 3 }).withMessage("Last name is too short"),
  
   UserController.register
 );
+
+
+// router.post('/activate/:token',UserController.activate)
+
+
 
 
 
