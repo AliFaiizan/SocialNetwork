@@ -30,6 +30,7 @@ const corsOption=(req,res) => {
     res(null,temp)
  }
 app.use(cors(corsOption))
+app.use(express.json())
 
 //This will dynamically set routes
 readdirSync('./Routes').map((r) => { 
