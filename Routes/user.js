@@ -6,9 +6,8 @@ const User = require('../models/user');
 
 const router= express.Router()
 
-
-router.post(
-  "/register",
+//register
+router.post("/register",
   check("email")
     .isEmail()
     .withMessage("Invalid Email")
@@ -35,9 +34,12 @@ router.post(
   UserController.register
 );
 
-
+//activate
 router.post('/activate/',UserController.activate)
-
+//login
+router.post('/login',
+     check("email").isEmail().withMessage("Email is not valid")   
+,UserController.login)
 
 
 

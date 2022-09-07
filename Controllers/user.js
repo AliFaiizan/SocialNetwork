@@ -115,3 +115,44 @@ module.exports.activate=async(req,res,next) =>{
     })
 
 }
+
+module.exports.login= async (req,res,next)=>{
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const email=req.body.email;
+    const password=req.body.password;
+
+    try{
+        const user=await User.findOne({email})
+    
+        if(!user){
+            throw new Error('User Does not Exists');
+        }
+    
+        const check=bcrypt.compareSync(password,user.password)
+    
+        if(!check){
+            throw new Error('Password is incorrect');
+        }
+
+       const authToken = GenerateAuthToken({ id: user._id.toString() }, "30m");
+
+       res.status(200).json({
+        userid:user._id,
+        token:authToken
+       })
+
+    }catch(err){
+        res.status(400).json({
+            error:err.message
+        })
+    }
+
+
+
+}
