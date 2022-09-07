@@ -36,7 +36,7 @@ router.post(
 );
 
 
-// router.post('/activate/:token',UserController.activate)
+router.post('/activate/',UserController.activate)
 
 
 
