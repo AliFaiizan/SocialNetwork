@@ -16,6 +16,7 @@ export default function Login() {
   const {email,password}=login;
 
   const handleLoginChange=(e) => { 
+    console.log(e)
       const {name,value} =e.target;
       setLogin({
         ...login,
@@ -57,12 +58,15 @@ export default function Login() {
                         name="email"
                         placeholder="Enter you email or phone number"
                         onChange={handleLoginChange}
+                        value={email}
                       />
                       <LoginInput
                         type="password"
                         name="password"
                         placeholder="Enter password"
                         onChange={handleLoginChange}
+                        value={password}
+                        bottom
                       />
                       <button type="submit" className="blue-btn">
                         Login

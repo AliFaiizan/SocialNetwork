@@ -22,3 +22,34 @@
 .input-error-border{
     border-color: #b94a48 !important ;
 }
+.input-wrap i{
+    position:absolute;
+    right: 5px;
+    top: 35px;
+    transform: scale(.8);
+}
+.input-error{
+    position: relative;
+    padding: 15px 10px;
+    background:#b94a48 !important;
+    width: 100%;
+    color:#fff ;
+    font-size: 13px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.error-arrow-top{
+    border-top: 10px solid #b94a48;
+    border-radius: 10px solid transparent;
+    border-left:10px solid transparent;
+    bottom: -10px;
+    position: absolute;
+} 
+
+.error-arrow-bottom{
+    border-bottom: 10px solid #b94a48;
+    border-radius: 10px solid transparent;
+    border-left:10px solid transparent;
+    top: -10px;
+    position: absolute;
+} 
