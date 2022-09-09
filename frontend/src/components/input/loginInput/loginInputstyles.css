@@ -28,7 +28,7 @@
 .input-wrap i{
     position:absolute;
     right: 5px;
-    top: 35px;
+    top: 15px ;
     transform: scale(.8);
 }
 .input-error{
@@ -41,6 +41,28 @@
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
+.input-error-desktop{
+    position: absolute;
+    padding: 15px 10px;
+    background:#b94a48 !important;
+    color:#fff ;
+    width: 200px;
+    left: -13.3rem;
+    top:1px;
+    font-size: 13px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+.error-arrow-desktop{
+    border-left:10px solid  #b94a48;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    right: -10px;
+    top: 14px;
+    position: absolute;
+} 
 .error-arrow-top{
     border-top: 10px solid #b94a48;
     border-right: 10px solid transparent;
