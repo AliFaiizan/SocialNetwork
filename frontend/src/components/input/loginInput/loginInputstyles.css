@@ -18,6 +18,9 @@
     margin-bottom:10px;
     color: var(--color-primary);
 }
+.input-wrap input:focus{
+    border-color: var(--blue-color);
+}
 
 .input-error-border{
     border-color: #b94a48 !important ;
@@ -40,7 +43,7 @@
 }
 .error-arrow-top{
     border-top: 10px solid #b94a48;
-    border-radius: 10px solid transparent;
+    border-right: 10px solid transparent;
     border-left:10px solid transparent;
     bottom: -10px;
     position: absolute;
@@ -48,7 +51,7 @@
 
 .error-arrow-bottom{
     border-bottom: 10px solid #b94a48;
-    border-radius: 10px solid transparent;
+    border-right: 10px solid transparent;
     border-left:10px solid transparent;
     top: -10px;
     position: absolute;
