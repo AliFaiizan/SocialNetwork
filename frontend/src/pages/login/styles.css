@@ -106,21 +106,109 @@
     border-bottom: 1px solid var(--bg-third);
 }
 
-.register-header i{
+.register-header .exit_icon{
     position:absolute;
     right:0;
     cursor:pointer;
 }
-.register-header span:first-of-type{
+.register-header .signuptitle{
      font-weight: 700;
      font-size: 32px;
 
 }
 
 
-.register-header span:last-of-type{
+.register-header .singupdescription{
     font-size: 15px;
     color: var(--color-secondary);
+}
+
+.register-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+.reg-line{
+    padding: 7px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.reg-col{
+    position: relative;
+    align-self: flex-start;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+.reg-line-header{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 13px;
+    color: var(--color-primary);
+}
+.reg-line-header i{
+    margin-top: 3px;
+}
+
+.reg-grid{
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:10px;
+    height: 35px;
+    width: 100%;
+}
+
+.reg-grid select{
+    width: 90px;
+    font-size: 16px;
+    color: var(--color-primary);
+    background:var(--bg-primary);
+    border-radius: 5px;
+    cursor:pointer;
+}
+.reg-grid label{
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    color: var(--color-primary);
+    background:var(--bg-primary);
+    border-radius: 5px;
+    border: 1px solid var(--color-secondary);
+    cursor:pointer;
+    padding:0 10px;
+}
+.reg-grid label input{
+    margin-top: 5px;
+}
+
+.reg-info{
+    font-size: 11px;
+    margin-top: 10px;
+    color: var(--color-secondary);
+}
+.reg-info span{
+    color: var(--blue-color);
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.reg-button-wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+.reg-button-wrapper button{
+    height: 50px;
 }
 
 
@@ -137,7 +225,7 @@
     flex-wrap: wrap;
     gap: 3px 10px;
     font-size: 13px;
-    color: var((--color-secondary));
+    color: var(--color-secondary);
     max-width: 350px;
     margin:0 auto;
 }
@@ -223,6 +311,9 @@
     }
      .login-footer-wrap{
         max-width: 900px;
+    }
+    .register{
+        width: 390px;
     }
 }
 
