@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import "./styles.css"
 import { Link } from 'react-router-dom';
 import Login from '../../components/login/Login';
@@ -6,15 +6,26 @@ import Register from '../../components/login/Register';
 
 export default function LoginPage() {
 
+  const [login,setLogin]=useState(true);
+
+  const handleFormState=() => { 
+      setLogin((preval) => { 
+        console.log(preval)
+        return !preval
+       })
+   }
+
+  
 
   return (
     <div className="login">
       <div className="login-wrapper">
+       
+          <Login formState={handleFormState} />
         
-        <Login />
-        <Register />
+         {login && <Register formState={handleFormState} />}
+       
         <Footer />
-        
       </div>
     </div>
   );

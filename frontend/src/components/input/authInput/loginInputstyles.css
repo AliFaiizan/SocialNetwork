@@ -62,12 +62,35 @@
     right: -10px;
     top: 14px;
     position: absolute;
-} 
+}
+.input-error-desktop-right{
+    position: absolute;
+    padding: 15px 10px;
+    background:#b94a48 !important;
+    color:#fff ;
+    width: 200px;
+    right: -13.3rem;
+    top:1px;
+    font-size: 13px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+.error-arrow-desktop-right{
+    border-right:10px solid  #b94a48;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    left: -10px;
+    top: 14px;
+    position: absolute;
+}
+ 
+
 .error-arrow-top{
     border-top: 10px solid #b94a48;
     border-right: 10px solid transparent;
     border-left:10px solid transparent;
-    bottom: -10px;
+    bottom: -9.5px;
     position: absolute;
 } 
 

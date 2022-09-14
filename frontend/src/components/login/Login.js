@@ -8,7 +8,7 @@ const loginInfo = {
   email: "",
   password: "",
 };
-export default function Login() {
+export default function Login({formState}) {
     const [login, setLogin] = useState(loginInfo);
 
     const { email, password } = login;
@@ -75,7 +75,7 @@ export default function Login() {
             ForgotPassword
           </Link>
           <div className="sign-spliter"> </div>
-          <button className="blue-btn open-signup">Create Account</button>
+          <button className="blue-btn open-signup" onClick={formState}>Create Account</button>
         </div>
         <Link to="/" className="sign-extra">
           <b>Create a Page </b>

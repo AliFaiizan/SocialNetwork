@@ -3,7 +3,7 @@ import React ,{useState} from 'react'
 import AuthInput from '../input/authInput';
 import * as Yup from 'yup';
 
-export default function Register() {
+export default function Register({formState}) {
 
 
 const [user, setUser] = useState({
@@ -43,7 +43,7 @@ const days = Array.from(new Array(getDay()), (val, index) => {
  });
 
 
- const handleRegisterChange=(e) => {
+const handleRegisterChange=(e) => {
   const {name,value}=e.target;
 
   setUser({...user,[name]:value})
@@ -54,9 +54,9 @@ const registerValidation = Yup.object({
   firstname: Yup.string()
     .required("First Name is required")
     .length(3,"Name length should be greater than 3 chracters"),
-  lastname: Yup.string().required("Last name is required"),
+  lastname: Yup.string().required("Enter you Last name"),
   email:Yup.string().required('Email is required'),
-  password:Yup.string().required('Password is required'),
+  password:Yup.string().required('Password is required').min(8,'Password should be atleat 8 characters long'),
   gender:Yup.string()
 });
 
@@ -64,11 +64,25 @@ const registerValidation = Yup.object({
     <div className="blur ">
       <div className="register">
         <div className="register-header">
-          <i className="exit_icon"></i>
+          <i className="exit_icon" onClick={formState}></i>
           <span className="signuptitle">Sign Up</span>
           <span className="singupdescription">It's quick and easy</span>
         </div>
-        <Formik enableReinitialize validationSchema={registerValidation}>
+        <Formik
+          enableReinitialize
+          initialValues={{
+            firstname,
+            lastname,
+            email,
+            password,
+            bday,
+            bmonth,
+            byear,
+            gender
+
+          }}
+          validationSchema={registerValidation}
+        >
           {(formik) => {
             return (
               <Form className="register-form">
@@ -80,17 +94,17 @@ const registerValidation = Yup.object({
                     onChange={handleRegisterChange}
                     value={firstname}
                   />
-                </div>
-                <div className="reg-line">
+
                   <AuthInput
                     type="text"
                     name="lastname"
-                    placeholder="Last Name"
+                    placeholder="Surname"
                     onChange={handleRegisterChange}
                     value={lastname}
+                    rightErrorLog={false}
                   />
                 </div>
-                <div className="reg-line">
+                <div >
                   <AuthInput
                     type="text"
                     name="email"
@@ -99,7 +113,7 @@ const registerValidation = Yup.object({
                     value={email}
                   />
                 </div>
-                <div className="reg-line">
+                <div >
                   <AuthInput
                     type="password"
                     name="password"
@@ -114,7 +128,11 @@ const registerValidation = Yup.object({
                     <i className="info_icon" />
                   </div>
                   <div className="reg-grid">
-                    <select name="bday" value={bday} onChange={handleRegisterChange}>
+                    <select
+                      name="bday"
+                      value={bday}
+                      onChange={handleRegisterChange}
+                    >
                       {days.map((day, i) => {
                         return (
                           <option value={day} key={i}>
@@ -123,7 +141,11 @@ const registerValidation = Yup.object({
                         );
                       })}
                     </select>
-                    <select name="bmonth" value={bmonth} onChange={handleRegisterChange}>
+                    <select
+                      name="bmonth"
+                      value={bmonth}
+                      onChange={handleRegisterChange}
+                    >
                       {months.map((month, i) => {
                         return (
                           <option value={month} key={i}>
@@ -132,7 +154,11 @@ const registerValidation = Yup.object({
                         );
                       })}
                     </select>
-                    <select name="byear" value={byear} onChange={handleRegisterChange}>
+                    <select
+                      name="byear"
+                      value={byear}
+                      onChange={handleRegisterChange}
+                    >
                       {years.map((year, i) => {
                         return (
                           <option value={year} key={i}>
@@ -155,7 +181,7 @@ const registerValidation = Yup.object({
                         type="radio"
                         name="gender"
                         id="male"
-                        value='male'
+                        value="male"
                         onChange={handleRegisterChange}
                       />
                     </label>
@@ -165,7 +191,7 @@ const registerValidation = Yup.object({
                         type="radio"
                         name="gender"
                         id="female"
-                        value='female'
+                        value="female"
                         onChange={handleRegisterChange}
                       />
                     </label>
@@ -175,7 +201,7 @@ const registerValidation = Yup.object({
                         type="radio"
                         name="gender"
                         id="other"
-                        value='other'
+                        value="other"
                         onChange={handleRegisterChange}
                       />
                     </label>
