@@ -61,7 +61,7 @@ const registerValidation = Yup.object({
 });
 
   return (
-    <div className="blur ">
+    <div className="blur">
       <div className="register">
         <div className="register-header">
           <i className="exit_icon" onClick={formState}></i>
@@ -101,7 +101,6 @@ const registerValidation = Yup.object({
                     placeholder="Surname"
                     onChange={handleRegisterChange}
                     value={lastname}
-                    rightErrorLog={false}
                   />
                 </div>
                 <div >
